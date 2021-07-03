@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kerala Tourism</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/signup.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </head>
@@ -36,37 +37,66 @@
           <div class="col-lg-4"></div>
         <!-- form div starts here -->
   
-          <div class="col-lg-3 myMargin">
-              <form class="row g-3">
-              <div class="col-md-12">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="email">
-              </div>
-              <div class="col-md-12">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="password">
-              </div>
-              <div class="col-12">
-                <label for="inputAddress" class="form-label">Address 1</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="House No">
-              </div>
-              <div class="col-12">
-                <label for="inputAddress2" class="form-label">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="street">
-              </div>
-              <div class="col-md-5">
-                <label for="inputCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="City">
-              </div>
-              <div class="col-md-4">
-                <label for="inputState" class="form-label">State</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="State">
-              </div>
-              <div class="col-md-3">
-                <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip" placeholder="PIN">
+          
+        <div class="col-lg-3 myMargin">
+          <form class="row g-3" action="index.html" onsubmit= "return validate()">
+            <div class="col-12">
+                <label for="FisrtName" class="form-label">Fisrt name</label>
+                <input type="text" class="form-control" id="firstname" placeholder="Fisrt Name" required>
               </div>
               
+              <div class="col-12">
+                <label for="LastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+              </div>
+              
+          <!-- <div class="col-md-12">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" placeholder="email" id="email" required>
+            <label for="error" id="error"></label>
+          </div> -->
+          <div class="col-12">
+            <label for="email" class="form-label" >Email address</label>
+            <input type="email" class="form-control" placeholder="email" id="email" required>
+            <label for="error" id="error"></label>
+            </div>
+          <div class="col-md-12">
+            <label for="inputState" class="form-label">Mobile No</label>
+            <input type="tel" class="form-control" placeholder="Phone Number" id = "phone_no" required>
+            <label for="phno_err" id="phno_err"></label>
+          </div>
+          <!-- <div class="col-md-12">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="password">
+            <label for="pass_err" id="pass_err"></label>
+          </div>
+           -->
+          <div class="mb-3 form-element">
+            
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <div class="field">
+                <input type="password" class="form-control pass" placeholder="password" id="password" required  onkeyup="trigger();">
+                <span class="showBtn">SHOW</span>
+
+            </div>
+            
+             <div class="indicator">
+                <span class="weak"></span>
+                <span class="medium"></span>
+                <span class="strong"></span>
+             </div>
+             <div class="text"></div>
+
+            </div>
+      
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"> Confirm Password</label>
+                <input type="password" class="form-control" placeholder="password" id="password2" required>
+                <label for="pass_err" id="pass_err2"></label>
+            </div>
+          
+          
+          
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
@@ -78,5 +108,81 @@
       <footer>
         <p>Copyright@Govt.of.kerala</p>
     </footer>
+
+    <script>
+      const indicator = document.querySelector(".indicator");
+      const input = document.querySelector(".pass");
+
+      const weak = document.querySelector(".weak");
+      const medium = document.querySelector(".medium");
+      const strong = document.querySelector(".strong");
+      const text = document.querySelector(".text");
+      const showBtn = document.querySelector(".showBtn");
+      let regexpWeak=/[a-z]/;
+      let regcap = /[A-Z]/;
+      let regexpMedium = /\d+/;
+      let regexpStrong =/.[!,@,#,$,%,^,&,*,?,_,-,~,(,)]/;
+      function trigger(){
+          if(input.value !=""){
+              indicator.style.display ="block";
+              indicator.style.display ="flex";
+              if(input.value.length<=3 && (input.value.match(regexpWeak) || input.value.match(regexpMedium) || input.value.match(regexpStrong) || input.value.match(regcap)))no=1;
+          
+              if(input.value.length>=6 && ((input.value.match(regexpWeak) && input.value.match(regexpMedium)) || (input.value.match(regexpMedium) && input.value.match(regexpStrong)) || (input.value.match(regexpWeak) && input.value.match(regexpStrong)) || (input.value.match(regexpWeak) && input.value.match(regcap)) || (input.value.match(regexpMedium) && input.value.match(regcap)) || (input.value.match(regexpStrong) && input.value.match(regcap)) || (input.value.match(regexpWeak) && input.value.match(regexpMedium) && input.value.match(regcap) && input.value.match(regexpStrong))))no=2;
+              if(input.value.length>=8 && input.value.match(regexpWeak) && input.value.match(regexpMedium) && input.value.match(regexpStrong))no=3;
+              if(no==1){
+                  weak.classList.add("active");
+                  text.style.display="block";
+                  text.textContent="Your password is too weak";
+                  text.classList.add("weak");
+              }
+              if(no==2){
+                  medium.classList.add("active");
+                  
+                  text.textContent="Your password is medium";
+                  text.classList.add("medium");
+              }
+              else{
+                  medium.classList.remove("active");
+                  text.classList.remove("medium");
+              }
+              if(no==3){
+                  medium.classList.add("active");
+                  strong.classList.add("active");
+                  
+                  text.textContent="Your password is strong";
+                  text.classList.add("strong");
+              }
+              else{
+                  strong.classList.remove("active");
+                  text.classList.remove("strong");
+              }
+              showBtn.style.display= "block";
+              showBtn.onclick = function(){
+                                  if(input.type=="password"){
+                                      input.type="text";
+                                      showBtn.textContent = "HIDE";
+                                      showBtn.style.color = "#000";
+                                  }
+                                  else{
+                                      
+                                      input.type = "password";
+                                      showBtn.textContent = "SHOW";
+                                      showBtn.style.color = "#000";
+                                      
+                                  }
+              }
+
+          }
+          else{
+              indicator.style.display ="none";
+              text.style.display="none";
+              showBtn.style.display = "none";
+          }
+      }
+</script>
+
+<script src="javascript/signup.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
   </body>
 </html>

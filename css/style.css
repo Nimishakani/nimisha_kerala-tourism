@@ -10,24 +10,13 @@ body{
     
 
 }
-.myMargin{
-    margin: 25px;
-}
-#bg{
-    margin-top: 10px;
-    text-align: center;
-   
-    width: 90%;
-    height: 550px; 
-    margin-left: 5%;
-    
-    
-}
+
 
 header{
     padding: 20px;
-    /* background-color:#778899; */
+    
     height: 5em;
+    background-color: #fbfbfd;
     
 }
 header li{
@@ -35,6 +24,12 @@ header li{
     font-size: 20px;
     font-weight: 500;
     
+}
+.sticky{
+    position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+
 }
 
 #logo{
@@ -48,7 +43,18 @@ header li{
     opacity: .5; */
     /* mix-blend-mode: multiply;    */
 }
-
+.myMargin{
+    margin: 25px;
+}
+#bg{
+    margin-top: 10px;
+    text-align: center;
+   
+    width: 90%;
+    height: 550px; 
+    margin-left: 5%;
+    
+}
 
 
 .kerala h1{

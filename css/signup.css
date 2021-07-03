@@ -1,0 +1,84 @@
+.field{
+    display: flex;
+    position: relative;
+}
+
+.field input{
+    height: 100%;
+    width: 100%;
+}
+.field .showBtn{
+    position: absolute;
+    right: 10px;
+    top: 60%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    display: none;
+}
+
+
+.indicator{
+    text-align: center;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    display: none;
+}
+
+.indicator span{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: lightgray;
+    position: relative;
+}
+
+.indicator span.medium{
+    margin: 0 3px;
+}
+.indicator span:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: red; */
+    border-radius: 5px;
+}
+
+.indicator span.active.weak:before{
+    background: #ff4757;
+}
+.indicator span.active.medium:before{
+    background:orange;
+
+}
+.indicator span.active.strong:before{
+    background: #23ad5c;
+}
+
+
+
+.text{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: -10px;
+    display: none;
+
+}
+
+.text.weak{
+    color: #ff4757;
+} 
+.text.medium{
+    color:orange;
+}
+.text.strong{
+    color: #23ad5c;
+}
